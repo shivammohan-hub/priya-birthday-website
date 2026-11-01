@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#090609" />
+    <title>For Priya, With Love ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "DM Sans", sans-serif;
+      }
+
+      .script {
+        font-family: "Dancing Script", cursive;
+      }
+
+      .screen {
+        display: none;
+      }
+
+      .screen.active {
+        display: flex;
+        animation: enter 0.6s ease both;
+      }
+
+      @keyframes enter {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.12);
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+          opacity: 0;
+        }
+
+        15% {
+          opacity: 0.7;
+        }
+
+        100% {
+          transform: translateY(-110vh) rotate(30deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes flicker {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(0.85);
+        }
+      }
+
+      .heart-pulse {
+        animation: pulse 1.6s infinite;
+      }
+
+      .flame {
+        animation: flicker 0.8s infinite;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.055);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(16px);
+      }
+
+      .photo-card img {
+        transition: transform 0.5s;
+      }
+
+      .photo-card:hover img {
+        transform: scale(1.06);
+      }
+
+      .modal-open {
+        overflow: hidden;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    class="min-h-screen overflow-x-hidden bg-[#090609] text-white selection:bg-pink-400/30"
+  >
+    <div class="pointer-events-none fixed inset-0 -z-0 overflow-hidden">
+      <div
+        class="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-pink-600/10 blur-[120px]"
+      ></div>
+      <div
+        class="absolute -bottom-40 -right-24 h-[28rem] w-[28rem] rounded-full bg-fuchsia-700/10 blur-[130px]"
+      ></div>
+    </div>
+    <header
+      class="relative z-10 mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8"
+    >
+      <span class="script text-2xl text-pink-200">For My Love ♡</span>
+      <button
+        id="musicBtn"
+        class="rounded-full border border-white/15 bg-white/[.06] px-4 py-2 text-xs text-pink-100 hover:bg-white/10"
+      >
+        ♫ <span id="musicLabel">Play music</span>
+      </button>
+    </header>
+
+    <main
+      class="relative z-[1] mx-auto flex min-h-[78vh] w-full max-w-6xl items-center justify-center px-4 pb-12 sm:px-8"
+    >
+      <section
+        id="screen-0"
+        class="screen active w-full flex-col items-center text-center"
+      >
+        <div class="heart-pulse mb-5 text-5xl text-pink-300">♡</div>
+        <p
+          class="mb-4 text-[10px] font-semibold uppercase tracking-[.35em] text-pink-200/75"
+        >
+          A little surprise for my special one
+        </p>
+        <h1
+          class="script max-w-4xl text-6xl font-semibold leading-[.98] sm:text-8xl"
+        >
+          Happy Birthday,<br /><span class="text-pink-300">Priya</span>
+        </h1>
+        <p
+          class="mt-7 max-w-xl text-sm leading-7 text-rose-100/65 sm:text-base"
+        >
+          I made this little corner of the internet just for you. Every click
+          has a memory, a thought, or a little piece of my heart.
+        </p>
+        <p class="mt-6 text-xs tracking-[.25em] text-pink-200/75">
+          02 · NOVEMBER · 2026
+        </p>
+        <button
+          data-next
+          class="mt-10 rounded-full bg-pink-300 px-8 py-3.5 text-sm font-semibold text-[#24101c] shadow-lg shadow-pink-500/20 transition hover:-translate-y-1 hover:bg-pink-200"
+        >
+          Tap Here 4a small Surprise ♡
+        </button>
+
+      </section>
+
+      <section id="screen-1" class="screen w-full flex-col">
+        <div class="mb-8 text-center">
+          <p class="text-[10px] uppercase underline tracking-[.3em] text-pink-200/70">
+            Chapter one
+          </p>
+          <h2 class="script mt-2 text-5xl text-pink-200 sm:text-6xl">
+            Our little memories
+          </h2>
+          <p class="mt-3 text-sm text-white/55">
+            A few moments I wish I could relive a thousand times.
+          </p>
+        </div>
+        <div
+          id="gallery"
+          class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5"
+        ></div>
+        <p class="mt-5 text-center text-[11px] text-white/35">
+          Tap any photo to see it closer.
+        </p>
+        <div class="mt-8 flex justify-center gap-3">
+          <button
+            data-prev
+            class="rounded-full border border-white/15 px-6 py-3 text-sm text-white/75 hover:bg-white/10"
+          >
+            Back</button
+          ><button
+            data-next
+            class="rounded-full bg-pink-300 px-6 py-3 text-sm font-semibold text-[#24101c] hover:bg-pink-200"
+          >
+            Keep going ♡ yrr
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="screen-2"
+        class="screen w-full max-w-3xl flex-col items-center text-center"
+      >
+        <p class="text-[10px] uppercase tracking-[.3em] text-pink-200/70">
+          Chapter two
+        </p>
+        <h2 class="script mt-3 text-5xl text-pink-200 sm:text-6xl">
+          Little things I about You
+        </h2>
+        <p class="mt-3 max-w-xl text-sm leading-7 text-white/55">
+          I could write a thousand reasons, but here i add just few.
+        </p>
+        <div class="mt-9 grid w-full gap-3 sm:grid-cols-2">
+          <div class="glass rounded-2xl p-5 text-left">
+            <span class="text-2xl">♡</span>
+            <h3 class="mt-3 font-semibold text-pink-100">Your smile</h3>
+            <p class="mt-2 text-sm leading-6 text-white/55">
+              It makes even an ordinary day feel special. And your Smile uska kya hee kehna.. 
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 text-left">
+            <span class="text-2xl">✧</span>
+            <h3 class="mt-3 font-semibold text-pink-100">Your kindness</h3>
+            <p class="mt-2 text-sm leading-6 text-white/55">
+              The way you care for me means a lot to me yrr. I can't express in words how lucky I feel.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 text-left">
+            <span class="text-2xl">☾</span>
+            <h3 class="mt-3 font-semibold text-pink-100">Your presence</h3>
+            <p class="mt-2 text-sm leading-6 text-white/55">
+              Somehow, everything feels better when you're around. Humdono bs ek dusre ke 4ro oor ghumte rahte h.
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5 text-left">
+            <span class="text-2xl">♡</span>
+            <h3 class="mt-3 font-semibold text-pink-100">Being you</h3>
+            <p class="mt-2 text-sm leading-6 text-white/55">
+              You don't need to be like anyone else. You are very special to me just the way you are. You are everything to me Bhanuwaa.
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 flex gap-3">
+          <button
+            data-prev
+            class="rounded-full border border-white/15 px-6 py-3 text-sm text-white/75 hover:bg-white/10"
+          >
+            Back</button
+          ><button
+            data-next
+            class="rounded-full bg-pink-300 px-6 py-3 text-sm font-semibold text-[#24101c] hover:bg-pink-200"
+          >
+            There's a something for you
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="screen-3"
+        class="screen w-full max-w-2xl flex-col items-center text-center"
+      >
+        <p class="text-[10px] uppercase tracking-[.3em] text-pink-200/70">
+          Chapter three
+        </p>
+        <h2 class="script mt-3 text-5xl text-pink-200 sm:text-6xl">
+          From my heart
+        </h2>
+        <p class="mt-3 text-sm text-white/55">
+          I wanted to tell you this in my own little way.
+        </p>
+        <button
+          id="envelope"
+          class="group mt-10 w-full max-w-md rounded-3xl border border-pink-200/20 bg-gradient-to-br from-[#321827] to-[#160e17] p-8 text-center shadow-2xl shadow-pink-950/30 transition hover:-translate-y-1"
+        >
+          <span class="text-6xl">💌</span
+          ><span class="script mt-5 block text-4xl text-pink-200"
+            >For my Bubu</span
+          ><span class="mt-2 block text-xs text-white/50"
+            >Tap to open your letter</span
+          >
+        </button>
+        <div class="mt-8 flex gap-3">
+          <button
+            data-prev
+            class="rounded-full border border-white/15 px-6 py-3 text-sm text-white/75 hover:bg-white/10"
+          >
+            Back</button
+          ><button
+            data-next
+            class="rounded-full bg-pink-300 px-6 py-3 text-sm font-semibold text-[#24101c] hover:bg-pink-200"
+          >
+            One last surprise
+          </button>
+        </div>
+      </section>
+
+      
+<section
+  id="screen-4"
+  class="screen w-full max-w-2xl flex-col items-center text-center"
+>
+  <p class="text-[10px] uppercase tracking-[.3em] text-pink-200/70">
+    The final surprise
+  </p>
+
+  <h2 class="script mt-3 text-5xl text-pink-200 sm:text-6xl">
+    Make a birthday wish
+  </h2>
+
+  <p class="mt-3 text-sm text-white/55">
+    Close your eyes, make a wish, and blow out the candles.
+  </p>
+
+  <!-- Birthday Cake -->
+  <div
+    class="relative mt-12 flex h-64 w-full max-w-sm flex-col items-center justify-end"
+  >
+    <div class="mb-[-2px] flex h-14 items-end gap-7">
+      <button class="candle relative h-14 w-3 rounded-t-md bg-pink-200" aria-label="Candle">
+        <span class="flame absolute -top-5 left-1/2 h-6 w-4 -translate-x-1/2 rounded-full bg-orange-300 shadow-[0_0_20px_8px_rgba(251,146,60,.35)]"></span>
+      </button>
+
+      <button class="candle relative h-16 w-3 rounded-t-md bg-rose-100" aria-label="Candle">
+        <span class="flame absolute -top-5 left-1/2 h-6 w-4 -translate-x-1/2 rounded-full bg-orange-300 shadow-[0_0_20px_8px_rgba(251,146,60,.35)]"></span>
+      </button>
+
+      <button class="candle relative h-14 w-3 rounded-t-md bg-pink-200" aria-label="Candle">
+        <span class="flame absolute -top-5 left-1/2 h-6 w-4 -translate-x-1/2 rounded-full bg-orange-300 shadow-[0_0_20px_8px_rgba(251,146,60,.35)]"></span>
+      </button>
+    </div>
+
+    <div class="relative z-[1] h-20 w-64 rounded-t-2xl border-b-4 border-pink-950/40 bg-gradient-to-b from-pink-200 to-rose-400 shadow-[0_12px_35px_rgba(244,114,182,.2)]">
+      <div class="absolute inset-x-0 top-5 h-2 bg-white/40"></div>
+      <p class="script relative top-7 text-2xl font-bold text-rose-950">
+        Happy Birthday Bhanuwaa ♡
+      </p>
+    </div>
+
+    <div class="h-5 w-72 rounded-b-xl bg-gradient-to-r from-rose-300 via-pink-100 to-rose-300"></div>
+  </div>
+
+  <button
+    id="blowBtn"
+    class="mt-8 rounded-full bg-pink-300 px-8 py-3.5 text-sm font-semibold text-[#24101c] hover:bg-pink-200"
+  >
+    Blow out the candles ✨
+  </button>
+
+  <p id="wishMessage" class="script mt-5 min-h-9 text-3xl text-pink-200"></p>
+
+  <!-- Personal Message Section -->
+  <div class="mt-10 w-full max-w-md rounded-2xl border border-pink-300/20 bg-white/[0.04] p-5 text-left">
+
+    <h3 class="script text-center text-3xl text-pink-200">
+      A little note from you ♡
+    </h3>
+
+    <p class="mt-2 text-center text-xs text-white/50">
+      Write something for Me. 
+    </p>
+
+    <textarea
+      id="personalMessage"
+      rows="4"
+      placeholder="Write your beautiful memories here..."
+      class="mt-5 w-full resize-none rounded-xl border border-pink-300/20 bg-black/40 p-4 text-sm text-white placeholder:text-white/30 outline-none focus:border-pink-300"
+    ></textarea>
+
+    <button
+      id="saveMessageBtn"
+      class="mt-3 w-full rounded-full bg-pink-300 px-5 py-3 text-sm font-semibold text-[#24101c] hover:bg-pink-200"
+    >
+      Save my message ♡
+    </button>
+
+    <p id="saveStatus" class="mt-3 text-center text-xs text-pink-200/70"></p>
+
+    <div class="mt-5 border-t border-pink-300/10 pt-4">
+      
+
+      <p
+        id="savedMessage"
+        class="mt-3 hidden whitespace-pre-wrap break-words text-sm leading-7 text-white/80"
+      ></p>
+    </div>
+
+  </div>
+
+  <button
+    id="restartBtn"
+    class="mt-7 text-xs text-white/40 underline underline-offset-4 hover:text-pink-200"
+  >
+    Replay the surprise
+  </button>
+</section>
+
+    </main>
+
+    <footer
+      class="relative z-10 pb-7 text-center text-[10px] tracking-[.18em] text-white/30"
+    >
+      <h1> MADE WITH MY HEART </h1> JUST FOR YOU BHANUWAA ♡
+    </footer>
+
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-30 hidden items-center justify-center bg-black/90 p-5 backdrop-blur-sm"
+    >
+      <button
+        id="lightboxClose"
+        class="absolute right-5 top-5 rounded-full border border-white/20 px-4 py-2 text-sm"
+      >
+        Close ✕</button
+      ><img
+        id="lightboxImage"
+        alt="A memory with Priya"
+        class="max-h-[82vh] max-w-full rounded-2xl object-contain shadow-2xl"
+      />
+    </div>
+    <div
+      id="letterModal"
+      class="fixed inset-0 z-40 hidden items-center justify-center bg-black/85 p-5 backdrop-blur-md"
+    >
+      <article
+        class="relative max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-3xl border border-pink-200/20 bg-[#171018] p-7 text-left shadow-2xl sm:p-10"
+      >
+        <button
+          id="letterClose"
+          class="absolute right-5 top-5 text-sm text-white/50"
+        >
+          ✕
+        </button>
+        <p class="text-xs uppercase tracking-[.25em] text-pink-200/60">
+          A little note for you
+        </p>
+        <h3 class="script mt-4 text-5xl text-pink-200">My dearest Priya,</h3>
+        <div class="mt-6 space-y-4 text-sm leading-8 text-rose-50/80">
+          <p>
+            If I could give you one thing in this world, it would be the ability
+            to see yourself through my eyes. Then you would understand just how
+            precious you are to me, and how much I love you. Haa kbi kbi gussa v bahott aata h but intead of that
+          </p>
+          <p>
+            Your smile makes ordinary days special, and your happiness means
+            more to me than words can say. Thank you for being you and for
+            making so many moments worth remembering.
+          </p>
+          <p>
+            I hope this year brings you the happiness, peace, and love you
+            deserve. No countdown could measure how much you mean to me.
+          </p>
+        </div>
+        <p class="script mt-8 text-3xl text-pink-200">Forever, <br>Yours Shivam ♡</p>
+      </article>
+    </div>
+    <audio
+      id="backgroundMusic"
+      src="assets/music.mp3"
+      loop
+      preload="none"
+    ></audio>
+
+    <script>
+
+
+
+
+
+
+
+
+// Personal birthday message storage
+
+const personalMessage = document.getElementById("personalMessage");
+const saveMessageBtn = document.getElementById("saveMessageBtn");
+const savedMessage = document.getElementById("savedMessage");
+const saveStatus = document.getElementById("saveStatus");
+
+// Load previously saved message
+function loadSavedMessage() {
+    const message = localStorage.getItem("priyaBirthdayMessage");
+
+    if (message) {
+        personalMessage.value = message;
+        savedMessage.textContent = message;
+    } else {
+        savedMessage.textContent = "No memory saved yet ♡";
+    }
+}
+
+// Save message permanently in this browser
+saveMessageBtn.addEventListener("click", () => {
+    const message = personalMessage.value.trim();
+
+    if (!message) {
+        saveStatus.textContent = "Please write something first ♡";
+        return;
+    }
+
+    localStorage.setItem("priyaBirthdayMessage", message);
+
+    savedMessage.textContent = message;
+    saveStatus.textContent = "Your beautiful memory has been saved! ♡";
+});
+
+// Load message when website opens
+loadSavedMessage();
+
+
+
+
+
+
+
+
+      const photos = Array.from({ length: 15 }, (_, i) => ({
+        src: `assets/photo-${String(i + 1).padStart(2, "0")}.jpg`,
+        caption: [
+          "A favourite moment",
+          "A smile I love",
+          "One for the memories",
+          "My happy place",
+          "Just us",
+        ][i % 5],
+      }));
+      const gallery = document.getElementById("gallery");
+      photos.forEach((photo, index) => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className =
+          "photo-card glass group overflow-hidden rounded-2xl text-left";
+        card.innerHTML = `<div class="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-[#3a1b30] via-[#201421] to-[#120d14]"><img src="${photo.src}" alt="Memory ${index + 1}" class="h-full w-full object-cover opacity-0" loading="lazy"><div class="photo-placeholder absolute inset-0 flex flex-col items-center justify-center gap-2 text-pink-200/70"><span class="text-3xl">♡</span><span class="px-3 text-center text-[10px] tracking-wider">ADD PHOTO ${String(index + 1).padStart(2, "0")}</span></div></div><p class="px-3 py-3 text-xs text-rose-100/75">${photo.caption}</p>`;
+        const img = card.querySelector("img");
+        img.addEventListener("load", () => {
+          img.classList.remove("opacity-0");
+          card.querySelector(".photo-placeholder").classList.add("hidden");
+        });
+        img.addEventListener("error", () => img.classList.add("hidden"));
+        card.addEventListener("click", () => {
+          if (img.complete && img.naturalWidth > 0) {
+            document.getElementById("lightboxImage").src = photo.src;
+            showModal("lightbox");
+          }
+        });
+        gallery.appendChild(card);
+      });
+      let current = 0;
+      const screens = [...document.querySelectorAll(".screen")];
+      function showScreen(n) {
+        current = Math.max(0, Math.min(screens.length - 1, n));
+        screens.forEach((s, i) => s.classList.toggle("active", i === current));
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      document
+        .querySelectorAll("[data-next]")
+        .forEach((b) =>
+          b.addEventListener("click", () => showScreen(current + 1)),
+        );
+      document
+        .querySelectorAll("[data-prev]")
+        .forEach((b) =>
+          b.addEventListener("click", () => showScreen(current - 1)),
+        );
+      function showModal(id) {
+        const el = document.getElementById(id);
+        el.classList.remove("hidden");
+        el.classList.add("flex");
+        document.body.classList.add("modal-open");
+      }
+      function hideModal(id) {
+        const el = document.getElementById(id);
+        el.classList.add("hidden");
+        el.classList.remove("flex");
+        document.body.classList.remove("modal-open");
+      }
+      document
+        .getElementById("envelope")
+        .addEventListener("click", () => showModal("letterModal"));
+      document
+        .getElementById("letterClose")
+        .addEventListener("click", () => hideModal("letterModal"));
+      document.getElementById("letterModal").addEventListener("click", (e) => {
+        if (e.target.id === "letterModal") hideModal("letterModal");
+      });
+      document
+        .getElementById("lightboxClose")
+        .addEventListener("click", () => hideModal("lightbox"));
+      document.getElementById("lightbox").addEventListener("click", (e) => {
+        if (e.target.id === "lightbox") hideModal("lightbox");
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          hideModal("letterModal");
+          hideModal("lightbox");
+        }
+      });
+      const music = document.getElementById("backgroundMusic"),
+        musicLabel = document.getElementById("musicLabel");
+      document
+        .getElementById("musicBtn")
+        .addEventListener("click", async () => {
+          if (music.paused) {
+            try {
+              await music.play();
+              musicLabel.textContent = "Pause music";
+            } catch {
+              alert("Add your MP3 file as assets/music.mp3, then try again.");
+            }
+          } else {
+            music.pause();
+            musicLabel.textContent = "Play music";
+          }
+        });
+      document.getElementById("blowBtn").addEventListener("click", () => {
+        document
+          .querySelectorAll(".flame")
+          .forEach((f) => f.classList.add("hidden"));
+        document.getElementById("wishMessage").textContent =
+          "May all your wishes come true, Aap hmesa khush rho hasti rho and mujhe v khush rahne do😁 meri jaan bubu. Once again, Happy Birthday! ❤️";
+        document.getElementById("blowBtn").disabled = true;
+        document
+          .getElementById("blowBtn")
+          .classList.add("opacity-50", "cursor-not-allowed");
+        for (let i = 0; i < 40; i++) setTimeout(createHeart, i * 35);
+      });
+      document.getElementById("restartBtn").addEventListener("click", () => {
+        document
+          .querySelectorAll(".flame")
+          .forEach((f) => f.classList.remove("hidden"));
+        document.getElementById("wishMessage").textContent = "";
+        document.getElementById("blowBtn").disabled = false;
+        document
+          .getElementById("blowBtn")
+          .classList.remove("opacity-50", "cursor-not-allowed");
+        showScreen(0);
+      });
+      function createHeart() {
+        const h = document.createElement("span");
+        h.textContent = Math.random() > 0.5 ? "♡" : "♥";
+        h.className =
+          "pointer-events-none fixed bottom-[-30px] z-[5] text-pink-300/70";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.fontSize = 12 + Math.random() * 20 + "px";
+        h.style.animation = `float ${6 + Math.random() * 5}s linear forwards`;
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 12000);
+      }
+      setInterval(createHeart, 850);
+    </script>
+  </body>
+</html>
